@@ -1,26 +1,65 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import whiskey from './whiskey.jpg';
+import hazel from './hazel.jpg';
+import tubby from './tubby.jpg';
 import './App.css';
+import Navs from './Navs';
+import DogList from './DogList';
+import Dog from './Dog';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  static defaultProps = {
+    dogs: [
+      {
+        name: "Whiskey",
+        age: 5,
+        src: whiskey,
+        facts: [
+          "Whiskey loves eating popcorn.",
+          "Whiskey is a terrible guard dog.",
+          "Whiskey wants to cuddle with you!"
+        ]
+      },
+      {
+        name: "Hazel",
+        age: 3,
+        src: hazel,
+        facts: [
+          "Hazel has soooo much energy!",
+          "Hazel is highly intelligent.",
+          "Hazel loves people more than dogs."
+        ]
+      },
+      {
+        name: "Tubby",
+        age: 4,
+        src: tubby,
+        facts: [
+          "Tubby is not the brightest dog",
+          "Tubby does not like walks or exercise.",
+          "Tubby loves eating food."
+        ]
+      }
+    ]
+  }
+  constructor(props) {
+    super(props);
+    this.state = { 
+
+     }
+  }
+  render() { 
+    return ( 
+      <div className='App'>
+        <Navs names={this.props.dogs.map(dog => dog.name)}/>
+        <Switch>
+          <Route exact path='/dogs' render={() => <DogList dogs={this.props.dogs}/>}/>
+          <Route exact path='/dogs/:name' render={(routeProps) => <Dog {...routeProps} />}/>
+        </Switch>
+      </div>
+     );
+  }
 }
-
+ 
 export default App;
