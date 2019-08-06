@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-
+import { Redirect, Link } from 'react-router-dom';
+import './Dog.css';
 
 class Dog extends Component {
     constructor(props) {
@@ -31,9 +31,9 @@ class Dog extends Component {
                                 {dogsName.facts.map((fact,i) => <li className="list-group-item" key={i}>{fact}</li>)}
                             </ul>
                             <div className="card-body ">
-                                <button  className="btn btn-primary " onClick={() => this.props.history.push('/dogs')}>
+                                <Link  className="btn btn-primary " to='/dogs'>
                                     Go Back
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     :   <Redirect to='/dogs'/>

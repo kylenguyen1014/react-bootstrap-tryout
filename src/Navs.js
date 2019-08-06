@@ -18,12 +18,11 @@ class Navs extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">                    
                             {this.props.names.map(dog => {
-                                return  <li className='nav-item'>
+                                return  <li className='nav-item' key={dog.toUpperCase()}>
                                             <NavLink exact 
                                                 activeClassName='Navbar-active' 
                                                 to={`/dogs/${dog.toLowerCase()}`}
                                                 className='nav-link'
-                                                key={dog}
                                                 >
                                                 {dog}
                                             </NavLink>

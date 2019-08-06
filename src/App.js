@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import whiskey from './whiskey.jpg';
 import hazel from './hazel.jpg';
 import tubby from './tubby.jpg';
@@ -64,8 +64,9 @@ class App extends Component {
       <div className='App'>
         <Navs names={this.props.dogs.map(dog => dog.name)}/>
         <Switch>
-          <Route exact path='/dogs' render={() => <DogList dogs={this.props.dogs}/>}/>
-          <Route exact path='/dogs/:dogname' render={(routeProps) => <Dog {...routeProps} dogs={this.props.dogs}/>}/>
+          <Route exact path='/dogs' render={(routeProps) => <DogList dogs={this.props.dogs} {...routeProps}/>} />
+          <Route exact path='/dogs/:dogname' render={(routeProps) => <Dog {...routeProps} dogs={this.props.dogs}/>} />
+          <Route render={() => <Redirect to='/dogs'/>} />
         </Switch>
       </div>
      );
