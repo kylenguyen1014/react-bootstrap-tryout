@@ -11,7 +11,7 @@ class Navs extends Component {
         return ( 
             <div className='Nav'>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <a className="navbar-brand" href="/">Dog Shelter</a>
+                    <a className="navbar-brand" href="/dogs">Dog Shelter</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -23,6 +23,7 @@ class Navs extends Component {
                                                 activeClassName='Navbar-active' 
                                                 to={`/dogs/${dog.toLowerCase()}`}
                                                 className='nav-link'
+                                                key={dog}
                                                 >
                                                 {dog}
                                             </NavLink>

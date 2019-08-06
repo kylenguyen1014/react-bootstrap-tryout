@@ -40,7 +40,17 @@ class App extends Component {
           "Tubby does not like walks or exercise.",
           "Tubby loves eating food."
         ]
-      }
+      },
+      // {
+      //   name: "Tubby",
+      //   age: 4,
+      //   src: tubby,
+      //   facts: [
+      //     "Tubby is not the brightest dog",
+      //     "Tubby does not like walks or exercise.",
+      //     "Tubby loves eating food."
+      //   ]
+      // }
     ]
   }
   constructor(props) {
@@ -55,7 +65,7 @@ class App extends Component {
         <Navs names={this.props.dogs.map(dog => dog.name)}/>
         <Switch>
           <Route exact path='/dogs' render={() => <DogList dogs={this.props.dogs}/>}/>
-          <Route exact path='/dogs/:name' render={(routeProps) => <Dog {...routeProps} />}/>
+          <Route exact path='/dogs/:dogname' render={(routeProps) => <Dog {...routeProps} dogs={this.props.dogs}/>}/>
         </Switch>
       </div>
      );
